@@ -14,9 +14,10 @@ class Travel extends Model
     use HasFactory , HasUuids;
     use Sluggable;
 
-    protected $table = 'travel';
+    protected $tables = 'travel';
 
     protected $fillable = [
+        'id',
         'is_public',
         'slug',
         'name',
