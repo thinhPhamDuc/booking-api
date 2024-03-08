@@ -8,6 +8,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
 
 class Travel extends Model
 {
@@ -44,5 +46,10 @@ class Travel extends Model
     public function tours(): HasMany
     {
         return $this->hasMany(Tour::class);
+    }
+    
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
     }
 }
