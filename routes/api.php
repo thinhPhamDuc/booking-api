@@ -19,8 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// https://www.dropbox.com/oauth2/authorize?client_id=idid1a09ipe1q4l&token_access_type=offline&response_type=code&redirect_uri=http://127.0.0.1:8000
 
 Route::get('test-email', [TravelController::class,'processQueue']);
+Route::post('/import-excel', [TravelController::class,'importExcel'])->name('importExcel');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
