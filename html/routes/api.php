@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::prefix('v1')->group(function () {
     Route::get('travels',[TravelController::class,'index']);
+    Route::get('transactions',[TravelController::class,'transactions']);
+    Route::get('products',[TravelController::class,'products']);
     Route::get('travels/{travel:slug}/tours',[TourController::class,'index']);
 });
 Route::prefix('admin')->middleware(['auth:sanctum'])->group(function () {

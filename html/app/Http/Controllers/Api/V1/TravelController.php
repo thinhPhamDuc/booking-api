@@ -7,12 +7,25 @@ use App\Http\Requests\ExcelRequest;
 use App\Http\Resources\TravelResource;
 use App\Models\Travel;
 use App\Jobs\SendWelcomeEmail;
+use App\Models\Product;
+use App\Models\Transaction;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TravelController extends Controller
 {
     public function index(){
         return TravelResource::collection(Travel::where('is_public',true)->paginate());
+    }
+
+    public function transactions(){
+        return Transaction::query()->cursorPaginate();
+    }
+
+    public function products(){
+        return Product::create([
+            'loan_id' => 3,
+            'user_id' => 2,
+        ]);
     }
 
     public function processQueue(){
